@@ -5,17 +5,53 @@ require "pry"
 # `:lives` keys assigned to arrays of info about that particular pigeon. Your
 # output should look something like the hash below:
 
+# def nyc_pigeon_organizer(data)
+#   pigeon_names = data.reduce({}) do |memo, (key, value)|
+#     memo=value if !memo
+#   p key
+#   p value
+#   memo
+#   binding.pry
+#   end
+# end
+
+# def nyc_pigeon_organizer(data)
+#   pigeon_names={}
+#   data.each do |key, value|
+    
+#     #iterate through value and return all the values
+#     value.each do |new_value, names|
+#       #turn names (eliminating reiterations) into keys and push into pigeon_names hash
+#       binding.pry 
+#     end 
+#   end 
+# end
+
 def nyc_pigeon_organizer(data)
-  pigeon_names = data.reduce({}) do |memo, (key, value)|
-  p key
-  p value 
-  memo
-    #binding.pry
-    #memo
+  return_hash = {}
+  data[:gender].each do |gender, names|
+    names.each do |name|
+      return_hash[name] = {
+        :color => [],
+        :gender => [],
+        :lives => []
+      }
+    end 
+  end 
+  return_hash.each do |name, attributes|
+    data.each do |attribute, value|
+      value.each do |key, name_array|
+        name_array.each do |pigeon_name|
+          if (pigeon_name == name)
+            return_hash[name][attribute] << key.to_s 
+          end 
+        end 
+      end
+    end
   end
-  #p pigeon_names
-  #binding.pry
-end
+  return_hash
+end 
+
 # bands.reduce({}) do |memo, (key, value)|
 #   p memo # First block parameter
 #   p key # Second block parameter
