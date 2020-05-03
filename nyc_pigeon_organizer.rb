@@ -1,7 +1,22 @@
 require 'pry'
 
 def nyc_pigeon_organizer(data)
-  data = {
-    pigeon_data.each { |key, value| }
-  }
+  pigeon_names = {}
+    data.each { |key, value| 
+      value.each { |key2, value2|
+        value2.each {|name|
+          if !pigeon_names[name]
+             pigeon_names[name] = {}
+          end
+  
+          if !pigeon_names[name][key]
+             pigeon_names[key] = []
+             end
+            pigeon_names[name][key].push(key2)
+        }
+      }
+    }
+    
 end
+
+#line 12 is where binding.pry stop working
