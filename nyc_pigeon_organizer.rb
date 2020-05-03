@@ -10,14 +10,12 @@ def nyc_pigeon_organizer(data)
           end
   
           if !pigeon_names[name][key]
-             pigeon_names[key] = []
+             pigeon_names[name][key] = []
              end
-            pigeon_names[name][key].push(key2)
+            pigeon_names[name][key].push(key2.to_s)
         }
-  binding.pry
       }
     }
-    
+    pigeon_names
 end
 
-#line 12 is where binding.pry stop working
